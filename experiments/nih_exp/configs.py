@@ -47,7 +47,7 @@ class configs(DefaultConfigs):
         self.select_prototype_subset = None
         self.hold_out_test_set = True
         # including val set. will be 3/4 train, 1/4 val.
-        self.n_train_val_data = 738
+        self.n_train_val_data = 220
 
         # choose one of the 3 toy experiments described in https://arxiv.org/pdf/1811.08661.pdf
         # one of ['donuts_shape', 'donuts_pattern', 'circles_scale'].
