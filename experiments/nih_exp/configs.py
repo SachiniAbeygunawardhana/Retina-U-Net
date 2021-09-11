@@ -28,7 +28,7 @@ class configs(DefaultConfigs):
         #    Preprocessing      #
         #########################
 
-        self.root_dir = '/home/gregor/datasets/toy_mdt'
+        self.root_dir = '/datasets'
 
         #########################
         #         I/O           #
