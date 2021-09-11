@@ -39,7 +39,7 @@ class configs(DefaultConfigs):
         self.dim = 2
 
         # one out of ['mrcnn', 'retina_net', 'retina_unet', 'detection_unet', 'ufrcnn', 'detection_unet'].
-        self.model = 'mrcnn'
+        self.model = 'retina_unet'
 
         DefaultConfigs.__init__(self, self.model, server_env, self.dim)
 
@@ -47,7 +47,7 @@ class configs(DefaultConfigs):
         self.select_prototype_subset = None
         self.hold_out_test_set = True
         # including val set. will be 3/4 train, 1/4 val.
-        self.n_train_val_data = 1500
+        self.n_train_val_data = 738
 
         # choose one of the 3 toy experiments described in https://arxiv.org/pdf/1811.08661.pdf
         # one of ['donuts_shape', 'donuts_pattern', 'circles_scale'].
@@ -56,10 +56,10 @@ class configs(DefaultConfigs):
 
         # path to preprocessed data.
         self.input_df_name = 'info_df.pickle'
-        self.pp_name = os.path.join(toy_mode, 'train')
-        self.pp_data_path = os.path.join(self.root_dir, self.pp_name)
-        self.pp_test_name = os.path.join(toy_mode, 'test')
-        self.pp_test_data_path = os.path.join(self.root_dir, self.pp_test_name)
+        self.pp_name = os.path.join(toy_mode, 'train') # donuts_shape_noise/train
+        self.pp_data_path = os.path.join(self.root_dir, self.pp_name) # /home/gregor/datasets/toy_mdt/donuts_shape_noise/train
+        self.pp_test_name = os.path.join(toy_mode, 'test') #donuts_shape_noise/test
+        self.pp_test_data_path = os.path.join(self.root_dir, self.pp_test_name) # /home/gregor/datasets/toy_mdt/donuts_shape_noise/test
 
         # settings for deployment in cloud.
         if server_env:
