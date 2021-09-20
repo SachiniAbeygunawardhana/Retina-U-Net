@@ -27,11 +27,12 @@ def multi_processing_create_image(inputs):
     out_dir, six, foreground_margin, class_diameters, mode = inputs
     print('processing {} {}'.format(out_dir, six))
 
-    img = np.random.rand(320, 320)
+    #create a random image
+    img = np.random.rand(320, 320) #Create an array of (320, 320) shape and populate it with random samples from a uniform distribution over [0, 1).
     seg = np.zeros((320, 320)).astype('uint8')
     center_x = np.random.randint(foreground_margin, img.shape[0] - foreground_margin)
     center_y = np.random.randint(foreground_margin, img.shape[1] - foreground_margin)
-    class_id = np.random.randint(0, 2)
+    class_id = np.random.randint(0, 2) # 0 or 1
 
     for y in range(img.shape[0]):
         for x in range(img.shape[0]):
@@ -39,7 +40,7 @@ def multi_processing_create_image(inputs):
                 img[y][x] += 0.2
                 seg[y][x] = 1
 
-    if 'donuts' in mode:
+    if 'donuts' in mode: #for donuts_shape and donuts_pattern
         whole_diameter = 4
         if class_id == 1:
             for y in range(img.shape[0]):
@@ -59,6 +60,7 @@ def multi_processing_create_image(inputs):
 
 def generate_experiment(exp_name, n_train_images, n_test_images, mode, class_diameters=(20, 20)):
 
+    # make directories to store pickle file
     train_dir = os.path.join(cf.root_dir, exp_name, 'train')
     test_dir = os.path.join(cf.root_dir, exp_name, 'test')
     if not os.path.exists(train_dir):
